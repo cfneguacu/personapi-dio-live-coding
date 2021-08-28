@@ -1,2 +1,42 @@
-package one.digitalinnovation.personapi.dto.request;public class PersonDTO {
+package one.digitalinnovation.personapi.dto.request;
+
+import com.danielfariati.annotation.CPF;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import one.digitalinnovation.personapi.entity.Phone;
+
+import javax.validation.Valid;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import java.time.LocalDate;
+import java.util.List;
+
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+public class PersonDTO {
+
+    private Long id;
+
+    @NotEmpty
+    @Size(min = 2, max = 100)
+    private String firstName;
+
+    @NotEmpty
+    @Size(min = 2, max = 100)
+    private String lastName;
+
+    @NotEmpty
+    @CPF
+    private String cpf;
+
+    private String birthDate;
+
+    @Valid
+    @NotNull
+    private List<Phone> phones;
 }
